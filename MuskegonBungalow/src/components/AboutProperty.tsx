@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutProperty = () => {
   return (
-    <section className="bg-emerald-700">
+    <section className="bg-rose-100">
       <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
         <div>
           <h2 className="text-3xl font-bold text-sage-900 mb-6">About Our Property</h2>

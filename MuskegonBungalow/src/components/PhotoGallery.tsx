@@ -43,7 +43,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
   }, [photos.length]);
 
   return (
-    <div className="relative bg-white py-4 sm:py-8">
+    <div className="relative bg-white py-4 sm:py-8 bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Main Photo */}
         <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mb-4 overflow-hidden rounded-lg lg:m-20">

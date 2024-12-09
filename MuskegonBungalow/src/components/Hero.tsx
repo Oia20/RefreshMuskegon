@@ -9,7 +9,7 @@ const Hero = () => {
           alt="Hero"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="absolute inset-0 bg-rose-700 opacity-10"></div>
       </div>
       <div className="relative flex items-center justify-center h-full text-center">
         <div className="max-w-3xl px-4">
