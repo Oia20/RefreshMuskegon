@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import PhotoGallery from '../components/PhotoGallery';
+import AboutProperty from '../components/AboutProperty';
+import Amenities from '../components/Amenities';
+import Reviews from '../components/Reviews';
+import Calendar from '../components/Calendar';
+// import ContactSection from '../components/ContactSection';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Temporary photo data - replace with your actual photos
+const photos = [
+  { url: 'chairs.avif', alt: 'House exterior' },
+  { url: 'living.avif', alt: 'Living room' },
+  { url: 'chairs.avif', alt: 'House exterior' },
+  { url: 'living.avif', alt: 'Living room' },
+  { url: 'chairs.avif', alt: 'House exterior' },
+  { url: 'living.avif', alt: 'Living room' },
+  { url: 'chairs.avif', alt: 'House exterior' },
+  { url: 'living.avif', alt: 'Living room' },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <main class="min-h-screen">
+    <Hero />
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24 bg-emerald-700">
+		<AboutProperty />
+	</div>
+
+    <PhotoGallery client:load photos={photos} />
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+      <Amenities />
+      <Reviews />
+      <Calendar client:load />
+      <!-- <ContactSection /> -->
+    </div>
+  </main>
 </Layout>
