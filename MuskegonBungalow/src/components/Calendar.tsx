@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
 
 const Calendar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <section className="relative bg-emerald-50 pt-24 pb-16 max-w-screen-xl mx-auto">
       {/* Top Wave */}
@@ -38,24 +26,23 @@ const Calendar = () => {
         <p className="text-emerald-800 mb-8 text-center">
           Plan your stay by checking our available dates
         </p>
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg max-w-4xl mx-auto overflow-x-hidden">
           <FullCalendar
             plugins={[dayGridPlugin, iCalendarPlugin]}
             initialView="dayGridMonth"
             height="auto"
             events={{
-              url: './mock-mock.ics',
+              url: '',
               format: 'ics',
             }}
             headerToolbar={{
-              left: window.innerWidth < 640 ? 'prev,next' : 'prev,next today',
+              left: 'prev,next today',
               center: 'title',
               right: '',
             }}
             buttonText={{
               today: 'Today',
             }}
-            buttonClassNames="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-md transition-colors duration-200"
             dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
             dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
             titleFormat={{ year: 'numeric', month: 'long' }}
@@ -64,6 +51,13 @@ const Calendar = () => {
               next: 'chevron-right',
             }}
           />
+          <style>{`
+            @media (max-width: 640px) {
+              .fc-today-button {
+                display: none !important;
+              }
+            }
+          `}</style>
         </div>
         <div className="text-center mt-8">
           <button className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-emerald-700 transition-colors duration-200 transform hover:scale-105">
