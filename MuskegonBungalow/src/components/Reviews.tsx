@@ -9,13 +9,13 @@ const reviews = [
     text: "This was our 4th time staying here. We just absolutely love the location. Quiet street and just a few minutes walk to the beach. Wish I would've booked 1 extra night 😊",
   },
   {
-    name: 'Beth R',
+    name: 'Beth R.',
     date: 'Stayed 7 Nights',
     rating: 5,
     text: 'Loved the back yard and screened in porch!! We had a wonderful vacation.',
   },
   {
-    name: 'Micki Cumming',
+    name: 'Micki C.',
     date: 'Stayed 21 Nights',
     rating: 5,
     text: "We really enjoyed our stay! The neighborhood was quiet and easy for walking plus only a short walk to Lake Michigan. The owners were easy to contact and took care of the couple of items we had!",
