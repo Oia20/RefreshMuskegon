@@ -6,6 +6,7 @@ import AboutProperty from '../components/AboutProperty';
 import Amenities from '../components/Amenities';
 import Reviews from '../components/Reviews';
 import Calendar from '../components/Calendar';
+import Navbar from '../components/Navbar';
 // import ContactSection from '../components/ContactSection';
 
 // Temporary photo data - replace with your actual photos
@@ -23,18 +24,28 @@ const photos = [
 
 <Layout>
   <main class="min-h-screen">
+    <Navbar client:load />
     <Hero />
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24 bg-rose-100 mb-0">
-		<AboutProperty />
-	</div>
+    <div class=" mb-0">
+      <div id="about">
+        <AboutProperty />
+      </div>
+    </div>
 
-    <PhotoGallery client:load photos={photos} />
+    <div id="gallery">
+      <PhotoGallery client:load photos={photos} />
+    </div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
-      <Amenities />
-      <Reviews />
-      <Calendar client:load />
-      <!-- <ContactSection /> -->
+      <div id="amenities">
+        <Amenities />
+      </div>
+      <div id="reviews">
+        <Reviews />
+      </div>
+      <div id="calendar">
+        <Calendar client:load />
+      </div>
     </div>
   </main>
 </Layout>
