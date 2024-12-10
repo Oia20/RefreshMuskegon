@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
 
 const Calendar = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <section className="relative bg-emerald-50 pt-24 pb-16 w-full">
+    <section className="relative bg-emerald-50 pt-24 pb-16 max-w-screen-xl mx-auto">
       {/* Top Wave */}
       <svg
         className="absolute top-0 left-0 w-full rotate-180"
@@ -36,13 +48,14 @@ const Calendar = () => {
               format: 'ics',
             }}
             headerToolbar={{
-              left: 'prev,next today',
+              left: window.innerWidth < 640 ? 'prev,next' : 'prev,next today',
               center: 'title',
               right: '',
             }}
             buttonText={{
               today: 'Today',
             }}
+            buttonClassNames="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-md transition-colors duration-200"
             dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
             dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
             titleFormat={{ year: 'numeric', month: 'long' }}
