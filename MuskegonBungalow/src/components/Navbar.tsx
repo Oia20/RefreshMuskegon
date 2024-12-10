@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="absolute w-full z-50 bg-black/20 backdrop-blur-sm">
+    <nav className="absolute w-full z-50 bg-black/20 backdrop-blur-sm max-h-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -37,48 +37,61 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-sage-900 hover:text-sage-700"
+              className="inline-flex items-center justify-center p-2 rounded-md text-emerald-400 hover:text-emerald-300"
             >
-              {isOpen ? (
-                <XMarkIcon className="block h-6 w-6" />
-              ) : (
-                <Bars3Icon className="block h-6 w-6" />
-              )}
+              <div className="relative w-6 h-6">
+                <XMarkIcon 
+                  className={`absolute transform transition-all duration-300 ease-in-out ${
+                    isOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90'
+                  } block h-6 w-6`} 
+                />
+                <Bars3Icon 
+                  className={`absolute transform transition-all duration-300 ease-in-out ${
+                    isOpen ? 'opacity-0 -rotate-90' : 'opacity-100 rotate-0'
+                  } block h-6 w-6`} 
+                />
+              </div>
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-white/80 backdrop-blur-sm`}>
+      <div 
+        className={`transform transition-all duration-300 ease-in-out ${
+          isOpen 
+            ? 'translate-y-0 opacity-100 visible' 
+            : '-translate-y-2 opacity-0 invisible pointer-events-none'
+        } md:hidden bg-black/20 backdrop-blur-sm`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <button
             onClick={() => scrollToSection('about')}
-            className="block w-full text-left px-3 py-2 text-sage-900 hover:bg-sage-100 rounded-md"
+            className="block w-full text-left px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-black/20 rounded-md transition-all duration-300"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection('gallery')}
-            className="block w-full text-left px-3 py-2 text-sage-900 hover:bg-sage-100 rounded-md"
+            className="block w-full text-left px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-black/20 rounded-md transition-all duration-300"
           >
             Gallery
           </button>
           <button
             onClick={() => scrollToSection('amenities')}
-            className="block w-full text-left px-3 py-2 text-sage-900 hover:bg-sage-100 rounded-md"
+            className="block w-full text-left px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-black/20 rounded-md transition-all duration-300"
           >
             Amenities
           </button>
           <button
             onClick={() => scrollToSection('reviews')}
-            className="block w-full text-left px-3 py-2 text-sage-900 hover:bg-sage-100 rounded-md"
+            className="block w-full text-left px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-black/20 rounded-md transition-all duration-300"
           >
             Reviews
           </button>
           <button
             onClick={() => scrollToSection('calendar')}
-            className="block w-full text-left px-3 py-2 text-sage-900 hover:bg-sage-100 rounded-md"
+            className="block w-full text-left px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-black/20 rounded-md transition-all duration-300"
           >
             Availability
           </button>

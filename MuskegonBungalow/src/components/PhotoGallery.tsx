@@ -32,6 +32,21 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
     })
   };
 
+  const captionVariants = {
+    enter: {
+      opacity: 0,
+      y: 20
+    },
+    center: {
+      opacity: 1,
+      y: 0
+    },
+    exit: {
+      opacity: 0,
+      y: -20
+    }
+  };
+
   const nextPhoto = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % photos.length);
@@ -43,10 +58,30 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
   }, [photos.length]);
 
   return (
-    <div className="relative bg-white py-4 sm:py-8 bg-white">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4">
-        {/* Main Photo */}
-        <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mb-4 overflow-hidden rounded-lg lg:m-20">
+    <section className="relative bg-white py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-emerald-900 mb-6 text-center">Photo Gallery</h2>
+        <p className="text-emerald-800 mb-8 text-center">Explore our beautiful cottage through these photos</p>
+        
+        {/* Main Photo Container */}
+        <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mb-4 overflow-hidden rounded-lg lg:mx-20">
+          {/* Caption */}
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={`caption-${currentIndex}`}
+              variants={captionVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.3 }}
+              className="absolute top-4 left-4 z-20 bg-emerald-900/80 backdrop-blur-sm rounded-lg px-4 py-2"
+            >
+              <p className="text-white font-medium text-lg">
+                {photos[currentIndex].alt}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -85,7 +120,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
         </div>
 
         {/* Thumbnails */}
-        <div className="flex gap-1 sm:gap-2 overflow-x-auto py-2 justify-center">
+        <div className="flex gap-1 sm:gap-2 overflow-x-auto py-2 justify-center lg:mx-20 cursor-grab">
           {photos.map((photo, index) => (
             <button
               key={index}
@@ -106,7 +141,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

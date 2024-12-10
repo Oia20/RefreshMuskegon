@@ -2,18 +2,18 @@ import React from 'react';
 
 const AboutProperty = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24 bg-emerald-50 relative">
+    <section className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24 bg-emerald-50 relative">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
           <div>
             <h2 className="text-3xl font-bold text-emerald-900 mb-6">About Our Property</h2>
             <p className="text-emerald-800 mb-4">
-              Nestled in the heart of Muskegon's natural beauty, our modern bungalow offers the perfect
+              Nestled in the heart of Muskegon's natural beauty, our cottage offers the perfect
               blend of comfort and connection with nature. This thoughtfully designed space provides
               an ideal retreat for those seeking both adventure and relaxation.
             </p>
             <p className="text-emerald-800 mb-4">
-              With 3 bedrooms and 2 bathrooms, our bungalow comfortably accommodates up to 6 guests,
+              With 3 bedrooms and 2 bathrooms, our cottage comfortably accommodates up to 6 guests,
               making it perfect for family gatherings or friend getaways. The open-concept living
               space creates a welcoming atmosphere that brings people together.
             </p>
