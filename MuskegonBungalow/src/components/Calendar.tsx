@@ -2,10 +2,66 @@ import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
+import ICAL from 'ical.js';
+import { useEffect, useState } from 'react';
 
 const Calendar = () => {
+  const [calendarData, setCalendarData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.formbee.dev/fetch-ical', {
+          headers: {
+            "Content-Type": "text/calendar",
+          },
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const rawData = await response.text();
+
+        // Preprocess iCalendar data to remove names
+        const processedData = rawData
+          .split('\n')
+          .map((line) => {
+            // Remove lines that start with "SUMMARY:" to hide names
+            if (line.startsWith('SUMMARY:')) {
+              return 'SUMMARY:Reserved'; // Replace with a generic term
+            }
+            return line;
+          })
+          .join('\n');
+
+        const parsedEvents = parseICal(processedData);
+        setCalendarData(parsedEvents);
+      } catch (error) {
+      }
+    };
+    fetchData();
+  }, []);
+
+  const parseICal = (icalData: string) => {
+    const events: any[] = [];
+    const parsed = ICAL.parse(icalData);
+    const comp = new ICAL.Component(parsed);
+    const vevents = comp.getAllSubcomponents('vevent');
+  
+    vevents.forEach((vevent) => {
+      const event = new ICAL.Event(vevent);
+      events.push({
+        title: event.summary,
+        start: event.startDate.toString(),
+        end: event.endDate.toString(),
+      });
+    });
+  
+    return events;
+  };
   return (
-    <section className="relative bg-emerald-100 pt-24 pb-16 max-w-screen-xl mx-auto">
+    <section className="relative bg-emerald-100 pt-24 pb-16 max-w-screen mx-auto">
       {/* Top Wave */}
       <svg
         className="absolute top-0 left-0 w-full rotate-180"
@@ -27,30 +83,27 @@ const Calendar = () => {
           Plan your stay by checking our available dates
         </p>
         <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg max-w-4xl mx-auto overflow-x-hidden">
-          <FullCalendar
-            plugins={[dayGridPlugin, iCalendarPlugin]}
-            initialView="dayGridMonth"
-            height="auto"
-            events={{
-              url: '',
-              format: 'ics',
-            }}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: '',
-            }}
-            buttonText={{
-              today: 'Today',
-            }}
-            dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
-            dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
-            titleFormat={{ year: 'numeric', month: 'long' }}
-            buttonIcons={{
-              prev: 'chevron-left',
-              next: 'chevron-right',
-            }}
-          />
+        <FullCalendar
+  plugins={[dayGridPlugin, iCalendarPlugin]}
+  initialView="dayGridMonth"
+  height="auto"
+  events={calendarData || []} // Use the parsed event data
+  headerToolbar={{
+    left: 'prev,next today',
+    center: 'title',
+    right: '',
+  }}
+  buttonText={{
+    today: 'Today',
+  }}
+  dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
+  dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
+  titleFormat={{ year: 'numeric', month: 'long' }}
+  buttonIcons={{
+    prev: 'chevron-left',
+    next: 'chevron-right',
+  }}
+/>
           <style>{`
             @media (max-width: 640px) {
               .fc-today-button {
