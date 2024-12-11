@@ -5,7 +5,7 @@ import iCalendarPlugin from '@fullcalendar/icalendar';
 
 const Calendar = () => {
   return (
-    <section className="relative bg-emerald-50 pt-24 pb-16 max-w-screen-xl mx-auto">
+    <section className="relative bg-emerald-100 pt-24 pb-16 max-w-screen-xl mx-auto">
       {/* Top Wave */}
       <svg
         className="absolute top-0 left-0 w-full rotate-180"
@@ -32,7 +32,7 @@ const Calendar = () => {
             initialView="dayGridMonth"
             height="auto"
             events={{
-              url: '',
+              url: 'http://www.vrbo.com/icalendar/2e33baec99224f2f985193a636529939.ics?nonTentative',
               format: 'ics',
             }}
             headerToolbar={{
