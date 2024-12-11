@@ -84,26 +84,26 @@ const Calendar = () => {
         </p>
         <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg max-w-4xl mx-auto overflow-x-hidden">
         <FullCalendar
-  plugins={[dayGridPlugin, iCalendarPlugin]}
-  initialView="dayGridMonth"
-  height="auto"
-  events={calendarData || []} // Use the parsed event data
-  headerToolbar={{
-    left: 'prev,next today',
-    center: 'title',
-    right: '',
-  }}
-  buttonText={{
-    today: 'Today',
-  }}
-  dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
-  dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
-  titleFormat={{ year: 'numeric', month: 'long' }}
-  buttonIcons={{
-    prev: 'chevron-left',
-    next: 'chevron-right',
-  }}
-/>
+          plugins={[dayGridPlugin, iCalendarPlugin]}
+          initialView="dayGridMonth"
+          height="auto"
+          events={calendarData || []} // Use the parsed event data
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: '',
+          }}
+          buttonText={{
+            today: 'Today',
+          }}
+          dayHeaderClassNames="text-emerald-900 uppercase text-sm font-semibold"
+          dayCellClassNames="hover:bg-emerald-50 cursor-pointer"
+          titleFormat={{ year: 'numeric', month: 'long' }}
+          buttonIcons={{
+            prev: 'chevron-left',
+            next: 'chevron-right',
+          }}
+        />
           <style>{`
             @media (max-width: 640px) {
               .fc-today-button {

@@ -6,8 +6,11 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src="daylake.png"
-          alt="Hero"
+          alt="Peaceful Muskegon cottage near Lake Michigan surrounded by nature"
           className="w-full h-full object-cover"
+          loading="eager"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gray-700 opacity-20"></div>
       </div>
