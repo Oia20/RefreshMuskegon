@@ -11,32 +11,32 @@ import Navbar from '../components/Navbar';
 
 // Temporary photo data - replace with your actual photos
 const photos = [
+  { url: 'https://utfs.io/f/oMW3imFO9N6PK0Ehn7wFCltpuzgUqMoVRaTJex0Ldjr5BN13', alt: 'Living room', lowResUrl: './lowresliving.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PcyxFc7vbMOvsrnRhEwqLJa7FIe6Gtj0Cg5Wl', alt: 'Kitchen', lowResUrl: './lowreskitch.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PCjySXlPaKpwyYMnQstlAzbZLUEeS2m08hHRq', alt: 'Entertainment Room', lowResUrl: './lowrese.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PdzsYtNLO4CcZVR3bHSPxKQw6tnGmNfksU0FX', alt: 'Washer and Dryer', lowResUrl: './lowreswd.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PKn4ALAuwFCltpuzgUqMoVRaTJex0Ldjr5BN1', alt: 'Screened in porch', lowResUrl: './lowrespicnic.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PpzvukK7WQoretdkJq38inmZKgf4aA0OLsvBV', alt: 'Master Bedroom', lowResUrl: './lowresmast.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6PcF2IrzvbMOvsrnRhEwqLJa7FIe6Gtj0Cg5Wl', alt: 'Entertainment Room', lowResUrl: './lowress.avif' },
+  { url: 'https://utfs.io/f/oMW3imFO9N6P0xuBGF6iv43xUKDozXTAhcbr2IsZ0nWGq1Je', alt: 'Little Black Creek', lowResUrl: './lowreslbc.webp' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PvQQN8BGRnXU8pDlusvKRQhLk4g75oPafNSJM', alt: 'Playroom', lowResUrl: './lowresplayroom.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PdbCsIqLO4CcZVR3bHSPxKQw6tnGmNfksU0FX', alt: 'Deer In The Backyard', lowResUrl: './lowresdeer.jpg' },
   { url: 'https://utfs.io/f/oMW3imFO9N6POkoaR4SF7VdkP5v2TBW9JZ8IAUlhct6HLY4G', alt: 'Hammock in the Backyard', lowResUrl: './lowreshammock.webp' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PdzsYtNLO4CcZVR3bHSPxKQw6tnGmNfksU0FX', alt: 'Washer and Dryer', lowResUrl: './lowreswd.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PF4gxP2pRGzUaDQtTC5HxIm7uk9VL2Xybnp3q', alt: 'Local WW2 Museum', lowResUrl: './lowresww2.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PztmBRnEBo2Su7PjCQAxm0LK6gfU51spibdDc', alt: 'Snowy sand dunes', lowResUrl: './lowressnowy1.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PFs5V7ZpRGzUaDQtTC5HxIm7uk9VL2Xybnp3q', alt: 'Local Lighthouse', lowResUrl: './lowressunset.webp' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6P0xuBGF6iv43xUKDozXTAhcbr2IsZ0nWGq1Je', alt: 'Little Black Creek', lowResUrl: './lowreslbc.webp' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PKn4ALAuwFCltpuzgUqMoVRaTJex0Ldjr5BN1', alt: 'Screened in porch', lowResUrl: './lowrespicnic.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6P37ffRPx0GAryZmnua5gSIcO9zlC26qfXDVjk', alt: 'Snow on the dunes', lowResUrl: './lowressnowy2.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PtdL0eg5HMT70NLO2JeZn9wifvyQUIj1cBPok', alt: 'Hoffmaster State Park', lowResUrl: './lowresbench.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PS5aLDLNB0zJC6DQF28kIwYEHsdoeNgPUTlWS', alt: 'Bunkbed Bedroom', lowResUrl: './lowresbedroom3.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PG7QjrEoDrtycVXjCfd5wl2SmO179JgaHEqZ0', alt: 'Entertainment Room', lowResUrl: './lowresent.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6P1v6DdMqATKNi3kDWyzEct6nxZ82CXojwrgMq', alt: 'Little Black Creek', lowResUrl: './lowreslbc2.avif' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PK0Ehn7wFCltpuzgUqMoVRaTJex0Ldjr5BN13', alt: 'Living room', lowResUrl: './lowresliving.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PCtdTSznPaKpwyYMnQstlAzbZLUEeS2m08hHR', alt: 'Sun Room', lowResUrl: './lowressun2.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PpyesAQ7WQoretdkJq38inmZKgf4aA0OLsvBV', alt: 'Bathroom', lowResUrl: './lowresbath.avif' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PcyxFc7vbMOvsrnRhEwqLJa7FIe6Gtj0Cg5Wl', alt: 'Kitchen', lowResUrl: './lowreskitch.avif' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PpzvukK7WQoretdkJq38inmZKgf4aA0OLsvBV', alt: 'Master Bedroom', lowResUrl: './lowresmast.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PxokkCVKKEfAWrPalFVRH1bqwtL0MNJciZ7T2', alt: 'Backyard', lowResUrl: './lowresback.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PYI8uSB0yiXlKzjCSB2q6wJxerYt59ImNaosp', alt: 'Sand Dunes', lowResUrl: './lowresdune2.avif' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PCjySXlPaKpwyYMnQstlAzbZLUEeS2m08hHRq', alt: 'Entertainment Room', lowResUrl: './lowrese.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6P65XQWhsmGejAtcyTgUZxOlvs957oqHSRCnhi', alt: 'House Front', lowResUrl: './lowresfront.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PxYnoMAKKEfAWrPalFVRH1bqwtL0MNJciZ7T2', alt: 'Bunkbed Bedroom', lowResUrl: './lowresbunk.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PrHio1zG38Qmqal2SuXMHVkvRtU0CniKyGTY1', alt: 'Second Bedroom', lowResUrl: './lowresmi.avif' },
-  { url: 'https://utfs.io/f/oMW3imFO9N6PcF2IrzvbMOvsrnRhEwqLJa7FIe6Gtj0Cg5Wl', alt: 'Entertainment Room', lowResUrl: './lowress.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PMMHxOTQO8pGXljN6t5qRAgQyaudImEPvfhF7', alt: 'Master Bedroom', lowResUrl: './lowresmas.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PnYSyrMOGBRldqXopw3buhx0VJOaejvfF2YCn', alt: 'Lake Michigan', lowResUrl: './lowreslbc3.avif' },
   { url: 'https://utfs.io/f/oMW3imFO9N6PuYj0aeXIC2kTyiXdLE8DW5n3Bbave70hP4sp', alt: 'Crayfish in Lake Michigan', lowResUrl: './lowcray.avif' },
@@ -52,7 +52,7 @@ const photos = [
 <Layout>
   <main class="min-h-screen">
     <Navbar client:load />
-    <Hero />
+    <Hero client:load/>
     <div class=" mb-0">
       <div id="about">
         <AboutProperty />

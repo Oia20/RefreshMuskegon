@@ -113,7 +113,9 @@ const Calendar = () => {
           `}</style>
         </div>
         <div className="text-center mt-8">
-          <button className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-emerald-700 transition-colors duration-200 transform hover:scale-105">
+          <button 
+          onClick={() => window.location.href = 'https://hi'}
+          className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-emerald-700 transition-colors duration-200 transform hover:scale-105">
             Book Now
           </button>
         </div>

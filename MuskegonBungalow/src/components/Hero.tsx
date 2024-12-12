@@ -22,9 +22,12 @@ const Hero = () => {
           <p className="text-xl text-white/90">
             Experience <span className="bg-gradient-to-r from-emerald-500 to-green-300 bg-clip-text text-transparent drop-shadow-[0_0_0.1rem_#4ade80]">tranquility</span> in our woodland escape
           </p>
-          <button className="bg-gradient-to-r from-emerald-500 to-green-700 text-white px-6 py-3 rounded-full mt-4 transition-all duration-300 hover:scale-105">
+          <button 
+          className="bg-gradient-to-r from-emerald-500 to-green-700 text-white px-6 py-3 rounded-full mt-4 transition-all duration-300 hover:scale-105"
+          onClick={() => window.location.href = 'https://hi'}
+          >
             Book Now
-        </button>
+          </button>
         </div>
 
       </div>
