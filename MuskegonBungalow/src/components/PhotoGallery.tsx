@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Photo {
   url: string;
   alt: string;
+  lowResUrl: string;
 }
 
 interface PhotoGalleryProps {
@@ -14,6 +15,23 @@ interface PhotoGalleryProps {
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>({});
+
+  useEffect(() => {
+    const imagesToLoad = [
+      currentIndex,
+      (currentIndex + 1) % photos.length,
+      (currentIndex - 1 + photos.length) % photos.length
+    ];
+
+    imagesToLoad.forEach(index => {
+      const img = new Image();
+      img.src = photos[index].url;
+      img.onload = () => {
+        setLoadedImages(prev => ({ ...prev, [photos[index].url]: true }));
+      };
+    });
+  }, [currentIndex, photos]);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -97,9 +115,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
               className="absolute inset-0"
             >
               <img
-                src={photos[currentIndex].url}
+                src={loadedImages[photos[currentIndex].url] ? photos[currentIndex].url : photos[currentIndex].lowResUrl}
                 alt={photos[currentIndex].alt}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-300 ${
+                  loadedImages[photos[currentIndex].url] ? 'opacity-100' : 'opacity-70'
+                }`}
               />
             </motion.div>
           </AnimatePresence>
@@ -120,7 +140,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
         </div>
 
         {/* Thumbnails */}
-        <div className="flex gap-1 sm:gap-2 overflow-x-auto py-2 justify-center lg:mx-20 cursor-grab">
+        <div className="flex gap-1 sm:gap-2 overflow-x-auto py-2 justify-start lg:mx-20 cursor-grab px-4 sm:px-6 lg:px-8">
           {photos.map((photo, index) => (
             <button
               key={index}
@@ -133,9 +153,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
               }`}
             >
               <img
-                src={photo.url}
+                src={loadedImages[photo.url] ? photo.url : photo.lowResUrl}
                 alt={photo.alt}
-                className="h-16 w-24 sm:h-20 sm:w-32 object-cover rounded"
+                className={`h-16 w-24 sm:h-20 sm:w-32 object-cover rounded transition-opacity duration-300 ${
+                  loadedImages[photo.url] ? 'opacity-100' : 'opacity-70'
+                }`}
               />
             </button>
           ))}
