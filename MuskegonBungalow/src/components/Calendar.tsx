@@ -114,7 +114,7 @@ const Calendar = () => {
         </div>
         <div className="text-center mt-8">
           <button 
-          onClick={() => window.location.href = 'https://hi'}
+          onClick={() => window.location.href = 'https://www.tripadvisor.com/VacationRentalReview-g42534-d23359204-Nature_s_Intrigue-Norton_Shores_Muskegon_County_Michigan.html'}
           className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-emerald-700 transition-colors duration-200 transform hover:scale-105">
             Book Now
           </button>

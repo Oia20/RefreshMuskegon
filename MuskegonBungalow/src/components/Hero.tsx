@@ -24,7 +24,7 @@ const Hero = () => {
           </p>
           <button 
           className="bg-gradient-to-r from-emerald-500 to-green-700 text-white px-6 py-3 rounded-full mt-4 transition-all duration-300 hover:scale-105"
-          onClick={() => window.location.href = 'https://hi'}
+          onClick={() => window.location.href = 'https://www.tripadvisor.com/VacationRentalReview-g42534-d23359204-Nature_s_Intrigue-Norton_Shores_Muskegon_County_Michigan.html'}
           >
             Book Now
           </button>
