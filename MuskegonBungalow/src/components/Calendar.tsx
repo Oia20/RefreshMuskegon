@@ -49,7 +49,7 @@ const Calendar = () => {
     const comp = new ICAL.Component(parsed);
     const vevents = comp.getAllSubcomponents('vevent');
   
-    vevents.forEach((vevent) => {
+    vevents.forEach((vevent: ICAL.Component) => {
       const event = new ICAL.Event(vevent);
       events.push({
         title: event.summary,
