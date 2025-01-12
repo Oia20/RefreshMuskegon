@@ -127,12 +127,14 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
           {/* Navigation buttons */}
           <button
             onClick={prevPhoto}
+            aria-label="Previous photo"
             className="z-10 absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 p-1 sm:p-2 rounded-full hover:bg-white transition-colors"
           >
             <ChevronLeftIcon className="h-4 w-4 sm:h-6 sm:w-6" />
           </button>
           <button
             onClick={nextPhoto}
+            aria-label="Next photo"
             className="z-10 absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 p-1 sm:p-2 rounded-full hover:bg-white transition-colors"
           >
             <ChevronRightIcon className="h-4 w-4 sm:h-6 sm:w-6" />

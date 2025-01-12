@@ -87,7 +87,10 @@ const Calendar = () => {
           plugins={[dayGridPlugin, iCalendarPlugin]}
           initialView="dayGridMonth"
           height="auto"
-          events={calendarData || []} // Use the parsed event data
+          events={calendarData.map(event => ({
+            ...event,
+            url: event.url || '#',
+          }))}
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
